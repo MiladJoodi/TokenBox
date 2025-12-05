@@ -3,6 +3,10 @@
 **TokenBox** is a lightweight Chrome extension designed to make managing API tokens super easy and safe. Whether you're a developer testing APIs or just need to copy tokens quickly, TokenBox helps you handle everything in one place.
 
 ---
+# 🎥 Demo Video
+Watch a quick demo of TokenBox in action:  
+[![Watch the video](https://miro.medium.com/v2/resize:fit:640/format:webp/1*YAPs-K9h07KF4rS8CGKlyg.png)]([https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID](https://www.youtube.com/shorts/UJIIaENGIzA))
+---
 
 ## 🚀 Features
 
