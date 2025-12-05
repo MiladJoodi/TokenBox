@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      width: 380px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .container {
+      background: #ffffff;
+      margin: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6c757d;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* URL Display */
+    .url-display {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8f9fa;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      color: #495057;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+
+    .url-display:hover {
+      background: #e9ecef;
+    }
+
+    .url-display span {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .url-display button {
+      padding: 4px 10px;
+      font-size: 11px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .url-display button:hover {
+      background: #5568d3;
+    }
+
+    /* URL Section */
+    #urlSection {
+      margin-bottom: 10px;
+    }
+
+    #urlSection input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      margin-bottom: 8px;
+      transition: border-color 0.2s;
+    }
+
+    #urlSection input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    #urlSection button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #667eea;
+      color: white;
+    }
+
+    #urlSection button:hover {
+      background: #5568d3;
+      transform: translateY(-1px);
+    }
+
+    /* Roles */
+    #rolesContainer {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #rolesContainer button {
+      padding: 8px 14px;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #495057;
+    }
+
+    #rolesContainer button:hover {
+      border-color: #667eea;
+      color: #667eea;
+      background: #f1f3ff;
+    }
+
+    #rolesContainer button.selected {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: transparent;
+      color: white;
+    }
+
+    #rolesContainer button:last-child {
+      border-style: dashed;
+      color: #667eea;
+    }
+
+    #deleteRoleBtn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #deleteRoleBtn:hover {
+      background: #c82333;
+    }
+
+    /* Edit Credentials Button */
+    #editCredBtn {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+
+    #editCredBtn:hover {
+      background: #5568d3;
+      transform: translateY(-1px);
+    }
+
+    /* Credentials */
+    #credentialsDiv {
+      background: #f8f9fa;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    #credentialsDiv input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      margin-bottom: 10px;
+      background: white;
+      transition: border-color 0.2s;
+    }
+
+    #credentialsDiv input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    #saveCredBtn {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #saveCredBtn:hover {
+      background: #218838;
+      transform: translateY(-1px);
+    }
+
+    /* Token Button */
+    #tokenBtn {
+      width: calc(100% - 70px);
+      padding: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-right: 8px;
+    }
+
+    #tokenBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    #copyBtn {
+      width: 60px;
+      padding: 12px 8px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #copyBtn:hover {
+      background: #218838;
+    }
+
+    /* Output */
+    #output {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 8px;
+      max-height: 180px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: 11px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.5;
+      color: #495057;
+      border: 2px solid #e9ecef;
+      margin-top: 12px;
+    }
+
+    #output::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #output::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    #output::-webkit-scrollbar-thumb {
+      background: #667eea;
+      border-radius: 4px;
+    }
+
+    #output::-webkit-scrollbar-thumb:hover {
+      background: #5568d3;
+    }
+
+    .button-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔐 Token Manager</h1>
+    </div>
+
+    <div class="content">
+      <!-- URL Display -->
+      <div class="section">
+        <div class="section-title">API Endpoint</div>
+        <div id="urlDisplay" class="url-display">
+          <span id="currentUrl">URL not set</span>
+          <button id="changeUrlBtn">Change</button>
+        </div>
+
+        <!-- URL Input Section -->
+        <div id="urlSection" style="display:none;">
+          <input id="apiUrlInput" placeholder="Enter API URL" type="url" />
+          <button id="saveUrlBtn">Save URL</button>
+        </div>
+      </div>
+
+      <!-- Roles -->
+      <div class="section">
+        <div class="section-title">Roles</div>
+        <div id="rolesContainer"></div>
+      </div>
+
+      <!-- Edit Credentials Button -->
+      <button id="editCredBtn" style="display:none;">Edit Credentials</button>
+
+      <!-- Credentials -->
+      <div id="credentialsDiv" style="display:none;">
+        <input id="username" placeholder="Username" type="text" autocomplete="off" />
+        <input id="password" placeholder="Password" type="password" autocomplete="off" />
+        <button id="saveCredBtn">Save Credentials</button>
+      </div>
+
+      <!-- Token Generation -->
+      <div class="button-group">
+        <button id="tokenBtn">Receive Token</button>
+        <button id="copyBtn" style="display:none;">Copy</button>
+      </div>
+
+      <!-- Output -->
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
